@@ -1,0 +1,16 @@
+Creating new images like a controller image:
+		Allow pictures as objects to be moved around and placed. Save positions and layer all into one image.
+		Let the user add text & icons etc.		
+
+Add notes system:
+		Allow users to add notes
+		Marker on each game to see if it has a note attached.
+
+Favourites: 
+	Scan to see if game is favourite.
+
+XmlEdit: 
+	Show all the other xmls the current system has in folder.
+
+Rubbish Folder:
+	Allow deleting of files from the app but sent to Hypermint Rubbish folder keeping directory structure of deleted location.

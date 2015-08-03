@@ -1,0 +1,1393 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Hypermint</name>
+    </assembly>
+    <members>
+        <member name="T:ExplorerTreeView.Controls.ExplorerErrorEventArgs">
+            <summary>
+            Provides data for explorer navigation exception handling.
+            </summary>
+        </member>
+        <member name="P:ExplorerTreeView.Controls.ExplorerErrorEventArgs.Exception">
+            <summary>
+            Gets thrown exception.
+            </summary>
+        </member>
+        <member name="T:ExplorerTreeView.Controls.ExplorerTreeView">
+            <summary>
+            This control displays a file system tree.
+            </summary>
+        </member>
+        <member name="F:ExplorerTreeView.Controls.ExplorerTreeView.SelectedPathPropertyName">
+            <summary>
+            The <see cref="P:ExplorerTreeView.Controls.ExplorerTreeView.SelectedPath"/> dependency property's name.
+            </summary>
+        </member>
+        <member name="F:ExplorerTreeView.Controls.ExplorerTreeView.UnloadItemsOnCollapsePropertyName">
+            <summary>
+            The <see cref="P:ExplorerTreeView.Controls.ExplorerTreeView.UnloadItemsOnCollapse"/> dependency property's name.
+            </summary>
+        </member>
+        <member name="F:ExplorerTreeView.Controls.ExplorerTreeView.SelectedPathProperty">
+            <summary>
+            Identifies the <see cref="P:ExplorerTreeView.Controls.ExplorerTreeView.SelectedPath"/> dependency property.
+            </summary>
+        </member>
+        <member name="F:ExplorerTreeView.Controls.ExplorerTreeView.UnloadItemsOnCollapseProperty">
+            <summary>
+            Identifies the <see cref="P:ExplorerTreeView.Controls.ExplorerTreeView.UnloadItemsOnCollapse"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:ExplorerTreeView.Controls.ExplorerTreeView.InvokeExplorerError(ExplorerTreeView.Controls.ExplorerErrorEventArgs)">
+            <summary>
+            Invocator for <see cref="E:ExplorerTreeView.Controls.ExplorerTreeView.ExplorerError"/> event.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:ExplorerTreeView.Controls.ExplorerTreeView.OnSelectedItemChanged(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            This method is invoked when user selects a node.
+            It causes <see cref="P:ExplorerTreeView.Controls.ExplorerTreeView.SelectedPath"/> to update its value.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ExplorerTreeView.Controls.ExplorerTreeView.OnItemExpanded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Occurs when tree node is expanded.
+            Reloads node sub-folders, if required.
+            May raise <see cref="E:ExplorerTreeView.Controls.ExplorerTreeView.ExplorerError"/> on some IO exceptions.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ExplorerTreeView.Controls.ExplorerTreeView.OnItemCollapsed(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Occurs when tree node is collapsed.
+            Unloads node sub-folders, if <see cref="P:ExplorerTreeView.Controls.ExplorerTreeView.UnloadItemsOnCollapse"/> is set to True.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ExplorerTreeView.Controls.ExplorerTreeView.HasSubFolders(System.Windows.Controls.TreeViewItem)">
+            <summary>
+            Checks whether specified <see cref="T:System.Windows.Controls.TreeViewItem"/> has any real sub-folder nodes.
+            </summary>
+            <param name="item">Node to check.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ExplorerTreeView.Controls.ExplorerTreeView.IsSelectionUpdateRequired(System.String)">
+            <summary>
+            Compares old <see cref="P:ExplorerTreeView.Controls.ExplorerTreeView.SelectedPath"/> value with the specified one 
+            and desides whether tree view selection has to be updated or not, if you apply this new value.
+            </summary>
+            <param name="newPath">New <see cref="P:ExplorerTreeView.Controls.ExplorerTreeView.SelectedPath"/> value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ExplorerTreeView.Controls.ExplorerTreeView.GenerateDirectoryNode(System.IO.DirectoryInfo)">
+            <summary>
+            Generates <see cref="T:System.Windows.Controls.TreeViewItem"/> for directory info.
+            </summary>
+            <param name="directory"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ExplorerTreeView.Controls.ExplorerTreeView.GenerateDriveNode(System.IO.DriveInfo)">
+            <summary>
+            Generates <see cref="T:System.Windows.Controls.TreeViewItem"/> for drive info.
+            </summary>
+            <param name="drive"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ExplorerTreeView.Controls.ExplorerTreeView.InitExplorer">
+            <summary>
+            Populates tree with initial drive nodes. 
+            </summary>
+        </member>
+        <member name="M:ExplorerTreeView.Controls.ExplorerTreeView.SetSelectedPath(System.String)">
+            <summary>
+            Updates tree view selection, so that it corresponds to specified <see cref="P:ExplorerTreeView.Controls.ExplorerTreeView.SelectedPath"/> value.
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:ExplorerTreeView.Controls.ExplorerTreeView.GetSelectedPath">
+            <summary>
+            Returns full path of the selected node.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:ExplorerTreeView.Controls.ExplorerTreeView.SelectedPath">
+            <summary>
+            Gets or sets the value of the <see cref="P:ExplorerTreeView.Controls.ExplorerTreeView.SelectedPath"/>
+            property. This is a dependency property.
+            </summary>
+        </member>
+        <member name="P:ExplorerTreeView.Controls.ExplorerTreeView.UnloadItemsOnCollapse">
+            <summary>
+            Gets or sets the value of the <see cref="P:ExplorerTreeView.Controls.ExplorerTreeView.UnloadItemsOnCollapse"/>
+            property. This is a dependency property.
+            </summary>
+        </member>
+        <member name="E:ExplorerTreeView.Controls.ExplorerTreeView.ExplorerError">
+            <summary>
+            This event is raised if error occurs while creating file system tree.
+            </summary>
+        </member>
+        <member name="T:Hypermint.Database">
+            <summary>
+            Databases for Hyperspin - Base class
+            </summary>
+            
+        </member>
+        <member name="M:Hypermint.HyperMintBaseClass.SearchForInstall(System.String)">
+            <summary>
+            Search for "Hyperspin" or "Rocketlauncher" directory on hard drive
+            </summary>
+            <param name="directory"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Hypermint.HyperMintBaseClass.HSPath">
+            <summary>
+            HyperSpin Main Directory
+            </summary>
+        </member>
+        <member name="P:Hypermint.HyperMintBaseClass.RLPath">
+            <summary>
+            Rocket launcher Main Directory
+            </summary>
+        </member>
+        <member name="P:Hypermint.HyperMintBaseClass.IMPath">
+            <summary>
+            Image Magick Path
+            </summary>
+        </member>
+        <member name="P:Hypermint.HyperMintBaseClass.RLMediaPath">
+            <summary>
+            Rocket Launcher Media Path
+            </summary>
+        </member>
+        <member name="F:Hypermint.Database.isHyperspin">
+            <summary>
+            Is the cell Hyperspin or Rocketlaunch
+            </summary>
+        </member>
+        <member name="M:Hypermint.Database.SetDatabaseFileAndCount">
+            <summary>
+            Set the systems xml path and count the number of games.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.Database.SerializeMainMenuItems(System.String,System.Collections.Generic.List{Hypermint.DatabaseMenu},System.String)">
+            <summary>
+            Serialize Main Menu objects to to xml. Provide menuXmlName no ".xml" extension
+            </summary>
+            <param name="menuXml"></param>
+        </member>
+        <member name="M:Hypermint.Database.OpenDatabase(System.String)">
+            <summary>
+            Not implemented
+            </summary>
+            <param name="dbname"></param>
+        </member>
+        <member name="M:Hypermint.Database.getSystems">
+            <summary>
+            Get the systems from a HS main menu.xml - Add Main Menu to list
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.Database.getMainMenuXmls">
+            <summary>
+            Grab all the Main Menu databases inside Hyperspin/Databases
+            </summary>
+            <returns>string[] of main menu xmls</returns>
+        </member>
+        <member name="M:Hypermint.Database.getFullPath(System.String,Hypermint.DatabaseGame,System.String)">
+            <summary>
+            Return the full path to selected cell
+            </summary>
+            <param name="columnHeader"></param>
+            <param name="game_click"></param>
+            <param name="hsPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.Database.setRLMediaPath(System.String,System.String,System.String,System.String)">
+            <summary>
+            Set the rocketlauncher path
+            </summary>
+            <param name="columnName"></param>
+            <param name="romname"></param>
+            <param name="systemname"></param>
+            <param name="MediaPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.Database.bw_DoWork(System.Object,System.ComponentModel.DoWorkEventArgs)">
+            <summary>
+            Using background worker to build collection of game objects from XML
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Hypermint.DatabaseGame.#ctor(System.String,System.String)" -->
+        <member name="M:Hypermint.DatabaseGame.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.String,System.String,System.Int32)">
+            <summary>
+            To Construct game object from XML
+            </summary>
+            <param name="name"></param>
+            <param name="index"></param>
+            <param name="image"></param>
+            <param name="desc"></param>
+            <param name="cloneof"></param>
+            <param name="crc"></param>
+            <param name="manu"></param>
+            <param name="year"></param>
+            <param name="genre"></param>
+            <param name="rating"></param>
+            <param name="enabled"></param>
+        </member>
+        <member name="M:Hypermint.DatabaseGame.GetSingleGameStats(Hypermint.DatabaseGame)">
+            <summary>
+            Returns the 4 values from the ini for the game sent to this
+            times played, last time played , average, total time
+            </summary>
+            <param name="systemName"></param>
+            <param name="romName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.DatabaseGame.GetAttributesFromGame">
+            <summary>
+            Build game variables from the database
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.DatabaseSearch.SearchXmlForGame(System.String,System.String)">
+            <summary>
+            Get Game values for game search
+            </summary>
+            <param name="romName"></param>
+            <param name="system"></param>
+        </member>
+        <member name="F:Hypermint.Favorites.FavesOutList">
+            <summary>
+            Output List set for return favorite DatabaseGame objects
+            </summary>
+        </member>
+        <member name="M:Hypermint.Favorites.GetFavoritesFromText(System.String)">
+            <summary>
+            Returns a list of favorites from a Hyperspin favorites text file
+            </summary>
+            <param name="system"></param>
+            <param name="hsPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.Favorites.updateGameListFavorites(System.Collections.Generic.List{Hypermint.DatabaseGame},System.Collections.Generic.List{System.String})">
+            <summary>
+            Takes a list of games and updates its IsFavorite  boolean
+            </summary>
+            <param name="gamelist"></param>
+        </member>
+        <member name="M:Hypermint.Favorites.ConvertGameFavoritesToXml(System.Collections.Generic.List{Hypermint.DatabaseGame},System.String,System.Boolean)">
+            <summary>
+            Create an xml from all the games tagged with IsFavorite
+            </summary>
+            <param name="gamelist"></param>
+        </member>
+        <member name="M:Hypermint.Favorites.GetAllFavorites(System.String[])">
+            <summary>
+            Scans all systems and returns a Database game list of favorites.
+            </summary>
+            <param name="systems"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.Favorites.getFaves(System.String,System.String)">
+            <summary>
+            Get string list of favorites for a given system
+            </summary>
+            <param name="system"></param>
+            <param name="hsPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.Favorites.QueryFavorite(System.String,System.String)">
+            <summary>
+            Get Game values for given favorite
+            </summary>
+            <param name="romName"></param>
+            <param name="system"></param>
+        </member>
+        <member name="M:Hypermint.Favorites.FavoriteToXml(System.String,System.Boolean,System.String)">
+            <summary>
+            Convert a list of game objects that are favorites into an xml
+            </summary>
+            <param name="systemName"></param>
+            <param name="saveToGenre"></param>
+            <param name="hsPath"></param>
+        </member>
+        <member name="M:Hypermint.Favorites.SerializeToXML(System.Collections.Generic.List{Hypermint.DatabaseGame},System.String,System.String)">
+            <summary>
+            Not sure this is needed anymore, use base class
+            </summary>
+            <param name="games"></param>
+            <param name="systemname"></param>
+            <param name="dbName"></param>
+        </member>
+        <member name="F:Hypermint.IniFile.m_sections">
+            <summary>
+            List of IniSection objects keeps track of all the sections in the INI file
+            </summary>
+        </member>
+        <member name="M:Hypermint.IniFile.#ctor">
+            <summary>
+            Public constructor
+            </summary>
+        </member>
+        <member name="M:Hypermint.IniFile.Load(System.String)">
+            <summary>
+            Loads the Reads the data in the ini file into the IniFile object
+            </summary>
+            <param name="sFileName"></param>
+        </member>
+        <member name="M:Hypermint.IniFile.Load(System.String,System.Boolean)">
+            <summary>
+            Loads the Reads the data in the ini file into the IniFile object
+            </summary>
+            <param name="sFileName"></param>
+            <param name="bMerge"></param>
+        </member>
+        <member name="M:Hypermint.IniFile.Save(System.String)">
+            <summary>
+            Used to save the data back to the file or your choice
+            </summary>
+            <param name="sFileName"></param>
+        </member>
+        <member name="M:Hypermint.IniFile.AddSection(System.String)">
+            <summary>
+            Adds a section to the IniFile object, returns a IniSection object to the new or existing object
+            </summary>
+            <param name="sSection"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.IniFile.RemoveSection(System.String)">
+            <summary>
+            Removes a section by its name sSection, returns trus on success
+            </summary>
+            <param name="sSection"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.IniFile.RemoveSection(Hypermint.IniFile.IniSection)">
+            <summary>
+            Removes section by object, returns trus on success
+            </summary>
+            <param name="Section"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.IniFile.RemoveAllSections">
+            <summary>
+            Removes all existing sections, returns trus on success
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.IniFile.GetSection(System.String)">
+            <summary>
+            Returns an IniSection to the section by name, NULL if it was not found
+            </summary>
+            <param name="sSection"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.IniFile.GetKeyValue(System.String,System.String)">
+            <summary>
+            Returns a KeyValue in a certain section
+            </summary>
+            <param name="sSection"></param>
+            <param name="sKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.IniFile.SetKeyValue(System.String,System.String,System.String)">
+            <summary>
+            Sets a KeyValuePair in a certain section
+            </summary>
+            <param name="sSection"></param>
+            <param name="sKey"></param>
+            <param name="sValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.IniFile.RenameSection(System.String,System.String)">
+            <summary>
+            Renames an existing section returns true on success, false if the section didn't exist or there was another section with the same sNewSection
+            </summary>
+            <param name="sSection"></param>
+            <param name="sNewSection"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.IniFile.RenameKey(System.String,System.String,System.String)">
+            <summary>
+            Renames an existing key returns true on success, false if the key didn't exist or there was another section with the same sNewKey
+            </summary>
+            <param name="sSection"></param>
+            <param name="sKey"></param>
+            <param name="sNewKey"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Hypermint.IniFile.Sections">
+            <summary>
+            Gets all the sections names
+            </summary>
+        </member>
+        <member name="T:Hypermint.IniFile.IniSection">
+            <summary>
+            IniSection class 
+            </summary>
+        </member>
+        <member name="T:Hypermint.Randomizer">
+            <summary>
+            Struct to randomize game selection from a Hyperspin database
+            </summary>
+        </member>
+        <member name="M:Hypermint.Randomizer.GetRandomXML">
+            <summary>
+            Deprecated?
+            </summary>
+        </member>
+        <member name="M:Hypermint.Randomizer.GetSystem">
+            <summary>
+            Returns a random system xml from the Main Menu.xml
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.Randomizer.GetGame(System.String)">
+            <summary>
+            Pick random game from a systemXML
+            </summary>
+            <param name="systemXML"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.Randomizer.RandomInt(System.Int32)">
+            <summary>
+            Get a random int from count of items
+            </summary>
+            <param name="countOfItems"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.Videos.YoutubeSearch(System.String)">
+            <summary>
+            Return a youtube URi
+            </summary>
+            <param name="searchLink"></param>
+            <param name="FileToSaveAs"></param>
+            <returns></returns>
+            
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Hypermint.Videos.DownloadVideo(System.String,System.Int32)" -->
+        <member name="M:Hypermint.Videos.YoutubeSearch(Hypermint.DatabaseGame,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="game"></param>
+            <param name="systemName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.Videos.GetUriForYoutube(System.String)">
+            <summary>
+            Return a youtube URi
+            </summary>
+            <param name="searchLink"></param>
+            <param name="FileToSaveAs"></param>
+            <returns></returns>
+            
+        </member>
+        <member name="T:Hypermint.HyperSpinMedia">
+            <summary>
+            Class to manage Hyperspin media
+            </summary>
+        </member>
+        <member name="M:Hypermint.HyperSpinMedia.ScanMediaPathForUnused(System.Collections.Generic.List{Hypermint.DatabaseGame},System.String)">
+            <summary>
+            Scan a hyperspin media path against a list of games to show media not used.
+            </summary>
+            <param name="games"></param>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.HyperSpinMedia.GetThemeInfoText(System.String)">
+            <summary>
+            Grab from info.text inside of theme.zip
+            </summary>
+            <param name="zipPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.HyperSpinMedia.bw_DoWork(System.Object,System.ComponentModel.DoWorkEventArgs)">
+            <summary>
+            Scan the game list for hyperspin artwork and set bools
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:Hypermint.RocketlaunchMedia">
+            <summary>
+            Class to manage rocketlauncher media
+            
+            </summary>
+        </member>
+        <member name="M:Hypermint.RocketlaunchMedia.#ctor(System.Collections.Generic.List{Hypermint.DatabaseGame},System.String,System.String)">
+            <summary>
+            Initilzi with a list of games
+            </summary>
+            <param name="games"></param>
+        </member>
+        <member name="M:Hypermint.RocketlaunchMedia.DroppedFile(System.String,System.String[])">
+            <summary>
+            Deal with dropped media files
+            </summary>
+            <param name="FullPath"></param>
+            <param name="filelist"></param>
+        </member>
+        <member name="T:Hypermint.BezelEdit">
+            <summary>
+            Class for the bezel editing for images, backgrounds and ini
+            </summary>
+        </member>
+        <member name="T:Hypermint.RocketLaunch">
+            <summary>
+            Class for managing Rocketlauncher
+            </summary>
+        </member>
+        <member name="M:Hypermint.RocketLaunch.RocketLaunchGameSTD(System.String,System.String)">
+            <summary>
+            Launch game with systemname Romname
+            </summary>
+            <param name="sys"></param>
+            <param name="rom"></param>
+        </member>
+        <member name="M:Hypermint.RocketLaunch.RocketLaunchMode(System.String,System.String,System.String)">
+            <summary>
+            Launch rocketlauncher into one of its modes for testing
+            </summary>
+            <param name="mode"></param>
+            <param name="sys"></param>
+            <param name="rom"></param>
+        </member>
+        <member name="M:Hypermint.BezelEdit.GetValueFromINI(System.String)">
+            <summary>
+            Supply the bezels ini file and return a string array with the points
+            </summary>
+            <param name="Filename"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.BezelEdit.saveIni(System.String[],System.String,System.String,System.String)">
+            <summary>
+            Saves the ini with new naming convention
+            </summary>
+            <param name="Inipoints"></param>
+            <param name="ratio"></param>
+            <param name="desc"></param>
+            <param name="author"></param>
+        </member>
+        <member name="M:Hypermint.InstructionCard.ConvertCard">
+            <summary>
+            Converts an instruction card
+            </summary>
+        </member>
+        <member name="M:Hypermint.InstructionCard.createCard(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Creates the instruction card
+            </summary>
+            <param name="newext"></param>
+            <param name="OutputFilename"></param>
+            <param name="w"></param>
+            <param name="h"></param>
+        </member>
+        <member name="P:Hypermint.InstructionCard.Position">
+            <summary>
+            Position of where the card should be placed on the screen
+            </summary>
+        </member>
+        <member name="T:Hypermint.FileManagement">
+            <summary>
+            Static methods for Hyperspin and rocketlauncher file management
+            </summary>
+        </member>
+        <member name="M:Hypermint.FileManagement.getStatFiles(System.String)">
+            <summary>
+            Get all the statistic files in the given folder
+            </summary>
+            <param name="rlPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.FileManagement.doesDirectoryContainFiles(System.String,System.String)">
+            <summary>
+            Search all sub directories for files
+            </summary>
+            <param name="path"></param>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.FileManagement.SendToTrash(System.String,System.IO.FileInfo,System.String,System.String,System.String)">
+            <summary>
+            Send selected items to RUbbish (Trash)
+            </summary>
+            <param name="TrashFolder"></param>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.FileManagement.CheckMediaFolderFiles(System.String,System.String)">
+            <summary>
+            Check all files in directory with given Extension
+            </summary>
+            <param name="fullpath"></param>
+            <param name="extFilter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.FileManagement.SearchAllFilesNameByRomname(System.String,System.String)">
+            <summary>
+            Return all files named by romname with Romname *.*
+            </summary>
+            <param name="FullPath"></param>
+            <param name="Romname"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.FileManagement.cellFilesRefresh(System.String,System.String,System.Boolean)">
+            <summary>
+            Refresh the files box
+            </summary>
+            <param name="column"></param>
+            <param name="HSSpecialArts"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Hypermint.ImageEdits">
+            <summary>
+            Image editing/Converting
+            </summary>
+        </member>
+        <member name="M:Hypermint.ImageEdits.BitmapFromUri(System.Uri)">
+            <summary>
+            Get imagesource from URI file link
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.ImageEdits.ResizeImage(System.Drawing.Image,System.Drawing.Size)">
+            <summary>
+            Resize an image
+            </summary>
+            <param name="imgToResize"></param>
+            <param name="size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.ImageEdits.TileImage(System.Drawing.Image,System.Drawing.Size)">
+            <summary>
+            Return a tiled Image
+            </summary>
+            <param name="imgToResize"></param>
+            <param name="size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.ImageInfo.getImageInfo(System.String)">
+            <summary>
+            Get properties info for image
+            </summary>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.ImageInfo.convertBytesToReadable(System.Int64)">
+            <summary>
+            Convert the images bytes to a readable string
+            </summary>
+            <param name="TotalFilesLength"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.ImageCreate.SetImageParameter(System.Boolean)">
+            <summary>
+            Set image parameters for renaming to Rocketlauncher names
+            and set new size
+            </summary>
+            <param name="Preview"></param>
+        </member>
+        <member name="M:Hypermint.ImageCreate.createImage(System.Boolean)">
+            <summary>
+            Create image 
+            </summary>
+            <param name="p"></param>
+            <returns></returns>
+        </member>
+        <member name="M:IniFileReader.#ctor(System.String)">
+            <summary>
+            INIFile Constructor.
+            </summary>
+            <PARAM name="INIPath"></PARAM>
+        </member>
+        <member name="M:IniFileReader.IniWriteValue(System.String,System.String,System.String)">
+            <summary>
+            Write Data to the INI File
+            </summary>
+            <PARAM name="Section"></PARAM>
+            Section name
+            <PARAM name="Key"></PARAM>
+            Key Name
+            <PARAM name="Value"></PARAM>
+            Value Name
+        </member>
+        <member name="M:IniFileReader.IniReadValue(System.String,System.String)">
+            <summary>
+            Read Data Value From the Ini File
+            </summary>
+            <PARAM name="Section"></PARAM>
+            <PARAM name="Key"></PARAM>
+            <PARAM name="Path"></PARAM>
+            <returns></returns>
+        </member>
+        <member name="T:Hypermint.Statistics">
+            <summary>
+            Struct class to manage all statistics from Rocketlauncher
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Hypermint.Statistics.timeConverter(System.String)" -->
+        <member name="M:Hypermint.Statistics.getSingleGameStats(System.String,System.String)">
+            <summary>
+            Returns the 4 values from the ini for the game sent to this
+            times played, last time played , average, total time
+            </summary>
+            <param name="systemName"></param>
+            <param name="romName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.Statistics.getStatFiles(System.String)">
+            <summary>
+            Get all stats files from Rocketlaunch data
+            </summary>
+            <param name="rlPath"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Hypermint.HypermintTools.PDFWorker">
+            <summary>
+            Uses iTextSharp for read writing text pdf and imagemagick for converting to images
+            </summary>
+        </member>
+        <member name="M:Hypermint.HypermintTools.PDFWorker.#ctor(System.String,System.String,Hypermint.HypermintTools.PDFWorker.PDFJobType,System.Boolean,System.Boolean)">
+            <summary>
+            Constructor used for when you need to chop booklets
+            </summary>
+            <param name="file"></param>
+            <param name="gameTitle"></param>
+            <param name="jobType"></param>
+        </member>
+        <member name="M:Hypermint.HypermintTools.PDFWorker.PDFPageCount(System.String)">
+            <summary>
+            Return a page count for pdf
+            </summary>
+            <param name="pdfPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.HypermintTools.PDFWorker.TextToPDF">
+            <summary>
+            Literally just runs the background worker. Set the jobtype with enum
+            Probably could remove this function and just add one method that knows what the jobtype is.
+            Case switch the enum??
+            </summary>
+        </member>
+        <member name="M:Hypermint.HypermintTools.PDFWorker.ConvertPDFChopped(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Old menu selection
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.HypermintTools.SimpleWheel.getFilteredDescriptions(System.String)">
+            <summary> getFilteredDescriptions
+            Run this on the caption to remove all the regions from description
+            </summary>
+            <param name="romDescription"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Hypermint.Presets">
+            <summary>
+            Classes for all presets
+            </summary>
+        </member>
+        <member name="M:Hypermint.Presets.GetPresetsFromDirectory(System.String)">
+            <summary>
+            Returns string[] of all the presets in given directory
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Hypermint.CardPresets">
+            <summary>
+            Instruction card preset class
+            </summary>
+        </member>
+        <member name="M:Hypermint.CardPresets.SavePreset(System.String,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Saves the instructon card to xml file
+            </summary>
+            <param name="presetName"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <param name="description"></param>
+            <param name="author"></param>
+            <param name="pos"></param>
+            <param name="resize"></param>
+            <param name="stretch"></param>
+        </member>
+        <member name="M:Hypermint.CardPresets.LoadPreset(System.String)">
+            <summary>
+            Read in xml values for preset
+            </summary>
+            <param name="XML"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.ImagePresets.saveXMLPresetImages(System.String,Hypermint.RocketlaunchMedia.RLMediaType,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Save Preset from given parameters.
+            </summary>
+            <param name="presetName"></param>
+            <param name="rlmedia"></param>
+            <param name="author"></param>
+            <param name="prefix"></param>
+            <param name="outW"></param>
+            <param name="outH"></param>
+            <param name="resize"></param>
+            <param name="stretch"></param>
+            <param name="ratio"></param>
+            <param name="tile"></param>
+            <param name="tileW"></param>
+            <param name="tileH"></param>
+            <param name="FlipL"></param>
+            <param name="FlipR"></param>
+            <param name="JPG"></param>
+        </member>
+        <member name="M:Hypermint.WheelPresest.saveXML_Preset(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Save a wheel preset from UI values
+            </summary>
+            <param name="presetName"></param>
+            <param name="WheelType"></param>
+            <param name="font"></param>
+            <param name="labelenabled"></param>
+            <param name="gameText"></param>
+            <param name="prefix_text"></param>
+            <param name="sizeX"></param>
+            <param name="sizeY"></param>
+            <param name="arc"></param>
+            <param name="trim"></param>
+            <param name="fillcolor"></param>
+            <param name="strokecolor"></param>
+            <param name="stroke"></param>
+            <param name="gravity"></param>
+            <param name="gravityOn"></param>
+            <param name="bgcolor"></param>
+            <param name="transp"></param>
+            <param name="shadColor"></param>
+            <param name="shadOn"></param>
+            <param name="shadSize"></param>
+            <param name="shadDist"></param>
+            <param name="swap"></param>
+            <param name="repage"></param>
+        </member>
+        <member name="M:Hypermint.InstructionCards.saveXML_Preset(System.String,System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Save presets for an instruction card
+            </summary>
+            <param name="presetName"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <param name="description"></param>
+            <param name="author"></param>
+            <param name="pos"></param>
+            <param name="resize"></param>
+            <param name="stretch"></param>
+        </member>
+        <member name="M:Hypermint.InstructionCards.presetRefresh">
+            <summary>
+            Refresh presets in "presets\\cards"
+            </summary>
+            <returns>string array of presets</returns>
+        </member>
+        <member name="M:Hypermint.InstructionCards.ConvertCard">
+            <summary>
+            Converts an instruction card
+            </summary>
+        </member>
+        <member name="M:Hypermint.InstructionCards.createCard(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Creates the instruction card
+            </summary>
+            <param name="newext"></param>
+            <param name="OutputFilename"></param>
+            <param name="w"></param>
+            <param name="h"></param>
+        </member>
+        <member name="T:Hypermint.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:Hypermint.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:Hypermint.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:Hypermint.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="F:Hypermint.MainWindow.totalOverallTime">
+            <summary>
+            Some stats Variables
+            </summary>
+        </member>
+        <member name="M:Hypermint.MainWindow.BuildMainMenuItems">
+            <summary>
+            Build Main menu object list 
+            </summary>
+            <param name="color"></param>
+            <param name="dark"></param>
+            
+        </member>
+        <member name="M:Hypermint.MainWindow.savePresetCards_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Save the instruction card preset Button
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Hypermint.MainWindow.refreshCardPresets" -->
+        <member name="M:Hypermint.MainWindow.delPresetCards_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Delete an instruction card preset
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.createCardInMenu_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Create an instruction card from the viewer context menu
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.presetListBoxCards_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Update the values in th gui each time a preset is selected.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.previewVideoTrim_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Video trimming from Media Elements Source file
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.listboxSystem_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            System ListBox Selections
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.buildMultiXml_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Creates a Multiple system database for Hyperspin
+            Adds symbolic links
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.bw_RunWorkerMultiSystemCompleted(System.Object,System.ComponentModel.RunWorkerCompletedEventArgs)">
+            <summary>
+            Multi system creator callback
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.buildFaves_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Run the scan favorites background worker invoking the favorite classes worker
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.bw_RunWorkerFaveScanSystemCompleted(System.Object,System.ComponentModel.RunWorkerCompletedEventArgs)">
+            <summary>
+            Add returned gamelist into the multisystem datagrid
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.hsDatagrid_MouseUp(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Mouse up selected cells on the main datagrid list
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.Updatemedia_wheel(System.String)">
+            <summary>
+            Update the viewer wheel with video, images etc
+            </summary>
+            <param name="columnHeader"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.DisplaySelectedImageFilesBox(System.String)">
+            <summary>
+            Display image for when the filesbox is clicked.
+            </summary>
+        </member>
+        <member name="M:Hypermint.MainWindow.LaunchGame_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Launch game through rocketlauncher standard. system romname
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.RLModeClick(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Launch a rocket launch mode
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.btn_ScanHS_Click(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Scan for Hyperspin media button
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.Button_Click_1(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Favorites
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.presetListBox_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Update the wheel creator UI values
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.savePreset_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Save a wheel preset from UI values
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.getImParameters">
+            <summary> getImParameters
+            Grab parameters from the GUI and set to string PAram
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.MainWindow.presetListBoxCards3_SelectionChanged(System.Object,System.Windows.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Instruction card list selection changed
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.saveXMLPresetImages(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Save Other images xml preset button
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow._buttonSearchYoutube(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Button that search youtube from selected game
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.DownloadVideo">
+            <summary>
+            Download youtube
+            </summary>
+        </member>
+        <member name="M:Hypermint.MainWindow.filterText_TextChanged_1(System.Object,System.Windows.Controls.TextChangedEventArgs)">
+            <summary>
+            Filtering by Text
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.filterText_TextChanged(System.Object,System.Windows.Controls.TextChangedEventArgs)">
+            <summary>
+            Text Filtering
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.saveFaves_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Save favorites
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.rectScanCancel_PreviewMouseUp(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Cancel background workers
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.SerializeToGenreXML(System.Collections.Generic.List{Hypermint.DatabaseGame},System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="games"></param>
+            <param name="systemname"></param>
+            <param name="dbName"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.DisposeOfBrowser">
+            <summary>
+            Method for shutting down the browser
+            </summary>
+        </member>
+        <member name="M:Hypermint.MainWindow.SaveBezel_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Save the bezel from points in the UI
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.TabItem_PreviewMouseDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Bezel loading
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.xmlListCurrents_MouseDoubleClick(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Double click on the system check xml to open corresponding file
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.Button_Click_4(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Scan videos for intros
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+            <summary>
+            Intro Videos
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.scanVideos_Click(System.Object,System.Windows.RoutedEventArgs)">
+            
+        </member>
+        <member name="M:Hypermint.MainWindow.Button_Click_5(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Intro Videos
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.Button_Click_7(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Intro VIdeos
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.Button_Click_15(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Cancel Intro Videos????
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.Button_Click_12(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Set multisystem hyperspin settings through dialog box
+            Opens current hyperspin settings folder
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.Button_Click_13(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Remove game from multisystem list
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow._buttonPlayGame_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Launch game
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.MenuItem_Click_1(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Send to image Edit
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.Button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Preview Image Edit
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.ImageCreateParams">
+            <summary>
+            Create an ImageCreate object and set params from UI
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.MainWindow.ImageCreateParamsFromXML(System.String,System.String)">
+            <summary>
+            Create an ImageCreate object with values from preset xml
+            </summary>
+            <param name="xmlPath"></param>
+            <param name="mediaType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Hypermint.MainWindow._imageCreateInMenu(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Convert image from preset in context menu
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.Button_Click_9(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Open Exports Folder
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.Button_Click_11(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Get video attributes, frame size etc
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.scanStats_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Scan statistics
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow._buttonGetStat_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Get statistics
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.saveGXml_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Save Favorites to XML
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.Button_Click_2(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Search testing
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hypermint.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="P:Hypermint.MainWindow.SelectedColumn">
+            <summary>
+            Holds the selected column name
+            </summary>
+        </member>
+        <member name="P:Hypermint.MainWindow.LastSelectedColumn">
+            <summary>
+            Holds the last selected column name
+            </summary>
+        </member>
+        <member name="P:Hypermint.MainWindow.WheelSource">
+            <summary>
+            Binding imagesource for viewer pane
+            </summary>
+        </member>
+        <member name="T:Hypermint.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Hypermint.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Hypermint.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:resources_icons_xaml">
+            <summary>
+            resources_icons_xaml
+            </summary>
+        </member>
+        <member name="M:resources_icons_xaml.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>
