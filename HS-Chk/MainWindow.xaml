@@ -2860,7 +2860,7 @@
                 <Controls:ToggleSwitch ToolTip="Show or hide Rocketlaunch folders." x:Name="toggleRL" Header="RL Visible" HorizontalAlignment="Left" Width="92" Height="61" VerticalAlignment="Bottom" IsChecked="True" Checked="toggleRL_Checked" Unchecked="toggleRL_Unchecked"/>
 
             </StackPanel>
-            <StackPanel Margin="4,247,0,0" Orientation="Vertical" HorizontalAlignment="Left" Width="97">
+            <StackPanel Margin="4,289,0,10" Orientation="Vertical" HorizontalAlignment="Left" Width="97">
                 <Controls:ToggleSwitch ToolTip="Enable database editing" x:Name="toggleXML" Header="DB Edit" HorizontalAlignment="Left" Width="97" Height="55" VerticalAlignment="Bottom" Checked="toggleXML_Checked" Unchecked="toggleXML_Unchecked"/>
                 <Button Style="{StaticResource AccentedSquareButtonStyle}" x:Name="saveFaves" Content="Favorites" Background="Green" 
         			IsEnabled="False"
@@ -2871,7 +2871,7 @@
                 <Button Style="{StaticResource AccentedSquareButtonStyle}" x:Name="saveGXml" Content="Fav 2 xml" Background="Green" ToolTip="Save favorites.txt to favorites.Xml"
         			Margin="0,2,6,0" Height="25" Click="saveGXml_Click" IsEnabled="False"/>
                 <DockPanel Margin="2,5,0,0">
-                    <CheckBox x:Name="addFaveToGenre" ToolTip="Add created favorites.xml to genre menu." Content="Add to genre" IsEnabled="False"></CheckBox>
+                    <CheckBox x:Name="addFaveToGenre" ToolTip="Add created favorites.xml to genre menu." Content="Add to genre" IsEnabled="False"/>
                 </DockPanel>
             </StackPanel>
             <DockPanel Height="30" VerticalAlignment="Top" Margin="4,5,-4,0">
@@ -2902,6 +2902,7 @@
                     <VisualBrush Visual="{StaticResource appbar_controller_snes}" />
                 </Button.OpacityMask>
             </Button>
+            <CheckBox x:Name="clonesCheckbox" ToolTip="Filter clones" Content="Clones" Margin="5,257,7,0" IsChecked="True" Height="18" VerticalAlignment="Top" Checked="clonesCheckbox_Checked" Unchecked="clonesCheckbox_Unchecked"/>
         </Grid>
         <ComboBox Margin="5,3,41,0" x:Name="_comboMainMenu" VerticalAlignment="Top" Height="31" SelectionChanged="_comboMainMenu_SelectionChanged" Grid.Row="1" ToolTip="Allows selection for different main menu.xml in Hyperspin/databases/main menu"/>
         <Button x:Name="menuEdit" Background="Green" Margin="0,3,5,0" Height="30" VerticalAlignment="Top" 

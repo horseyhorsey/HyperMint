@@ -4367,6 +4367,47 @@ namespace Hypermint
             }
         }
 
+        private void clonesCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            if (hsDatagrid.ItemsSource != null)
+            {
+                ICollectionView cv = CollectionViewSource.GetDefaultView(hsDatagrid.ItemsSource);
+                    cv.Filter = null;
+            }
+        }
+
+        private void clonesCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (hsDatagrid.ItemsSource != null)
+            {
+                System.Windows.Controls.CheckBox c = (System.Windows.Controls.CheckBox)sender;
+                bool filter = c.IsChecked.Value;
+                ICollectionView cv = CollectionViewSource.GetDefaultView(hsDatagrid.ItemsSource);
+                if (filter)
+                    cv.Filter = null;
+                else
+                {
+                    cv.Filter = o =>
+                    {
+                        DatabaseGame h = o as DatabaseGame;
+                        bool flag = false;
+                        if (h.CloneOf != string.Empty)
+                        {
+                            flag = false;
+                            return (flag);
+                        }
+                        else
+                        {
+                            flag = true;
+                            return (flag);
+                        }
+                    };
+                }
+            }        
+        }
+
+
+
     }
         
 
