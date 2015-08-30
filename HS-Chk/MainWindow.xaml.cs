@@ -4406,6 +4406,22 @@ namespace Hypermint
             }        
         }
 
+        /// <summary>
+        /// Export audits to text
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _buttonExportAudit_Click(object sender, RoutedEventArgs e)
+        {
+            //List<string> Mediafolders = new List<string> { "Artwork1", "Artwork2", "Artwork3", "Artwork4" };
+            ExportMissHave.ExportMissingTextsHyperSpin(DatabaseGame.ToList(), hsdb.SystemName);
+        }
+
+        private void _buttonExportHave_Click(object sender, RoutedEventArgs e)
+        {
+            ExportMissHave.ExportHaveTextsHyperSpin(DatabaseGame.ToList(), hsdb.SystemName);
+        }
+
 
 
     }

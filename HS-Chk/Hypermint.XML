@@ -1313,6 +1313,13 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
+        <member name="M:Hypermint.MainWindow._buttonExportAudit_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Export audits to text
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
         <member name="M:Hypermint.MainWindow.InitializeComponent">
             <summary>
             InitializeComponent

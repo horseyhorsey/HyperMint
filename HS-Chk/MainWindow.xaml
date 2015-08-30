@@ -2860,7 +2860,7 @@
                 <Controls:ToggleSwitch ToolTip="Show or hide Rocketlaunch folders." x:Name="toggleRL" Header="RL Visible" HorizontalAlignment="Left" Width="92" Height="61" VerticalAlignment="Bottom" IsChecked="True" Checked="toggleRL_Checked" Unchecked="toggleRL_Unchecked"/>
 
             </StackPanel>
-            <StackPanel Margin="4,289,0,10" Orientation="Vertical" HorizontalAlignment="Left" Width="97">
+            <StackPanel Margin="4,311,0,3" Orientation="Vertical" HorizontalAlignment="Left" Width="97">
                 <Controls:ToggleSwitch ToolTip="Enable database editing" x:Name="toggleXML" Header="DB Edit" HorizontalAlignment="Left" Width="97" Height="55" VerticalAlignment="Bottom" Checked="toggleXML_Checked" Unchecked="toggleXML_Unchecked"/>
                 <Button Style="{StaticResource AccentedSquareButtonStyle}" x:Name="saveFaves" Content="Favorites" Background="Green" 
         			IsEnabled="False"
@@ -2903,6 +2903,12 @@
                 </Button.OpacityMask>
             </Button>
             <CheckBox x:Name="clonesCheckbox" ToolTip="Filter clones" Content="Clones" Margin="5,257,7,0" IsChecked="True" Height="18" VerticalAlignment="Top" Checked="clonesCheckbox_Checked" Unchecked="clonesCheckbox_Unchecked"/>
+            <Button Style="{StaticResource AccentedSquareButtonStyle}" x:Name="_buttonExportAudit" Content="Miss" Background="Green"
+            	Margin="0,281,60,0" Click="_buttonExportAudit_Click"
+            	ToolTip="Export missing media to text files" Height="25" VerticalAlignment="Top"/>
+            <Button Style="{StaticResource AccentedSquareButtonStyle}" x:Name="_buttonExportHave" Content="Have" Background="Green"
+            	Margin="55,281,5,0"
+            	ToolTip="Export have media to text files" Height="25" VerticalAlignment="Top" Click="_buttonExportHave_Click"/>
         </Grid>
         <ComboBox Margin="5,3,41,0" x:Name="_comboMainMenu" VerticalAlignment="Top" Height="31" SelectionChanged="_comboMainMenu_SelectionChanged" Grid.Row="1" ToolTip="Allows selection for different main menu.xml in Hyperspin/databases/main menu"/>
         <Button x:Name="menuEdit" Background="Green" Margin="0,3,5,0" Height="30" VerticalAlignment="Top" 
